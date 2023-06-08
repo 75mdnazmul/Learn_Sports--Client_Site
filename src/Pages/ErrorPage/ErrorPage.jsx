@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import img from '../../assets/Error/ErrorPhoto.webp'
+import usePageTitleName from "../../Hook/PageTitleName/PageTitleName";
 
 const ErrorPage = () => {
+    usePageTitleName('Got Error')
 
     return (
         <div className=" text-center">
