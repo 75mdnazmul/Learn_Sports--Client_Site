@@ -1,18 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../public/logo.webp'
-import { FaClock, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
+import { FaClock, FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhoneAlt, FaTwitterSquare, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
     return (
         <div className='  bg-base-200 text-base-content'>
             <div className="footer container mx-auto p-10 ">
                 <div>
-                    <Link to='/' className='flex items-center'>
+                    <Link to='/' className='flex items-center '>
                         <img className='w-[50px]' src={logo} alt="" />
                         <h3 className='font-bold text-2xl text-white'>Learn Sports</h3>
                     </Link>
-                    <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <p className='py-4'>Our sports institute is the best institute.<br/> You or your child can safely get admission in our institution.<br/> We assure you that something good will happen inshallah</p>
+                    <div className='flex gap-x-4'>
+                        <i className='hover:text-[#F7B501] text-4xl'><FaFacebook /></i>
+                        <i className='hover:text-[#F7B501] text-4xl'><FaTwitterSquare /></i>
+                        <i className='hover:text-[#F7B501] text-4xl'><FaInstagram /></i>
+                        <i className='hover:text-[#F7B501] text-4xl'><FaYoutube /></i>
+                        <i className='hover:text-[#F7B501] text-4xl'><FaLinkedin /></i>
+                    </div>
                 </div>
                 <div>
                     <span className="font-bold text-2xl text-slate-200">Classes</span>

@@ -26,7 +26,7 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className='btn text-white text-lg font-bold'>Login</Link>
+                    <Link to="/login" className='btn text-white text-lg font-bold'>Login</Link>
                 </div>
             </div>
 
