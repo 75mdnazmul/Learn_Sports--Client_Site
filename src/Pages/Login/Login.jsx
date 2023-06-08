@@ -33,7 +33,7 @@ const Login = () => {
                                 <label className="label ">
                                     <span className="label-text">Password</span>                                    
                                 </label>
-                                <input type='' placeholder="password" className="input input-bordered " />
+                                <input type={(open === false) ? 'password' : 'text'} placeholder="password" className="input input-bordered " />
                                 <span className='absolute right-4 bottom-3 text-xl cursor-pointer' onClick={handleToggle}>{
                                     (open === false) ? <FaEye/> : <FaEyeSlash/>
                                 }</span>

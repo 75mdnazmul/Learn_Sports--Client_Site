@@ -7,9 +7,13 @@ import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 const Registration = () => {
     usePageTitleName('Registration page')
     const [open, setOpen] = useState(false);
+    const [open2, setOpen2] = useState(false);
 
-    const handleToggle = () =>{
+    const handleTogglePass = () =>{
         setOpen(!open)
+    }
+    const handleToggleConPass = () =>{
+        setOpen2(!open2)
     }
     return (
             <div className="hero py-10">
@@ -32,8 +36,8 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder=" Write your password" className="input input-bordered" />
-                                <span className='absolute right-4 bottom-3 text-xl cursor-pointer' onClick={handleToggle}>{
+                                <input type={(open === false) ? 'password' : 'text'} placeholder=" Write your password" className="input input-bordered" />
+                                <span className='absolute right-4 bottom-3 text-xl cursor-pointer' onClick={handleTogglePass}>{
                                     (open === false) ? <FaEye/> : <FaEyeSlash/>
                                 }</span>
                             </div>
@@ -41,9 +45,9 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="password" placeholder="Again Write your password" className="input input-bordered" />
-                                <span className='absolute right-4 bottom-3 text-xl cursor-pointer' onClick={handleToggle}>{
-                                    (open === false) ? <FaEye/> : <FaEyeSlash/>
+                                <input type={(open2 === false) ? 'password' : 'text'} placeholder="Again Write your password" className="input input-bordered" />
+                                <span className='absolute right-4 bottom-3 text-xl cursor-pointer' onClick={handleToggleConPass}>{
+                                    (open2 === false) ? <FaEye/> : <FaEyeSlash/>
                                 }</span>
                             </div>
                             <div className="form-control">
