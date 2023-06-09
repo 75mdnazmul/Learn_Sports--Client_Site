@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../public/logo.webp'
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navber = () => {
+    const { user, logOut, name, photo } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
+
     return (
         <div className=" navbar bg-base-100 py-3">
             <div className='container mx-auto navbar'>
@@ -22,11 +30,33 @@ const Navber = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/instructors'>Instructors</Link></li>
                         <li><Link to='/classes'>Classes</Link></li>
-                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                        {
+                            user?.email && <>
+                                <li><Link to='/dashboard'>Dashboard</Link></li>
+                            </>
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login" className='btn text-white text-lg font-bold'>Login</Link>
+                    {
+                        user ? (
+                            <>
+                                {photo ? (
+                                    <img className="w-[60px] h-[60px] mx-2 border-[3px] border-white rounded-full" title={user.displayName || name} src={user.photoURL || photo} alt="Profile Picture" />
+                                ) : (
+                                    <img className="w-[60px] h-[60px] mx-2 border-[3px] border-white rounded-full" title={user.displayName || name} src={user.photoURL} alt="Profile Picture" />
+                                    // -????????????
+                                )}
+                                <Link to="/login">
+                                    <button onClick={handleLogOut} className="btn font-bold text-white bg-[#F7B501] ml-3">Log Out</button>
+                                </Link>
+                            </>
+                        ) : (
+                            <Link to="/login">
+                                <button className="btn font-bold text-white bg-[#F7B501]">Login</button>
+                            </Link>
+                        )
+                    }
                 </div>
             </div>
 

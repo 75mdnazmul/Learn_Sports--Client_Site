@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import loginImg from "../../assets/Login & resister/register.webp"
 import usePageTitleName from '../../Hook/PageTitleName/PageTitleName';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 
@@ -10,6 +10,9 @@ const Registration = () => {
 
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const navigate = useNavigate();
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
 
     const { loginWithGoogle, createUser, setName, setPhoto } = useContext(AuthContext)
 
@@ -19,6 +22,7 @@ const Registration = () => {
             .then(result => {
                 const google = result.user;
                 console.log(google);
+                navigate(from, { replace: true })
                 setSuccess("Registration is successfully completed")
             })
             .catch(error => {
@@ -45,6 +49,7 @@ const Registration = () => {
                 const userLogged = result.user;
                 console.log(userLogged);
                 form.reset();
+                navigate(from, { replace: true })
                 setSuccess("Registration is successfully completed")
                 setName(name)
                 setPhoto(photo)
@@ -66,7 +71,7 @@ const Registration = () => {
     return (
         <div className="hero py-10">
             <div className="hero-content flex-col justify-around lg:flex-row-reverse">
-                <form onSubmit={handleFormData} className="w-1/2 card  max-w-lg  bg-base-100">
+                <form onSubmit={handleFormData} className="w-1/2 card shadow-2xl max-w-lg  bg-base-100">
                     <div className="card-body">
                         <div className="form-control">
                             <label className="label">

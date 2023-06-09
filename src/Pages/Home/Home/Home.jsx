@@ -5,8 +5,8 @@ import Subscribe from '../Subscribe/Subscribe';
 const Home = () => {
     return (
         <div>
-            <JoinUs/>
-            <Subscribe/>
+            <JoinUs />
+            <Subscribe />
         </div>
     );
 };

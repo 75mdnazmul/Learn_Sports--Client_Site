@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import loginImg from "../../assets/Login & resister/login.webp"
 import usePageTitleName from '../../Hook/PageTitleName/PageTitleName';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 
@@ -11,6 +11,9 @@ const Login = () => {
 
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const navigate = useNavigate();
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
 
     const { logIn, loginWithGoogle } = useContext(AuthContext)
 
@@ -34,6 +37,7 @@ const Login = () => {
                 const loggedUser = result.user
                 console.log(loggedUser);
                 form.reset()
+                navigate(from, { replace: true })
                 setSuccess("Login is successfully completed")
             })
             .catch(error => {
@@ -47,6 +51,7 @@ const Login = () => {
             .then(result => {
                 const Google = result.user
                 console.log(Google);
+                navigate(from, { replace: true })
                 setSuccess("Google Login is successfully completed")
             })
             .catch(error => {
@@ -54,7 +59,7 @@ const Login = () => {
             })
     }
 
-    // Password Toggle handle
+    // Password Show Hide Toggle handle
     const [open, setOpen] = useState(false);
     const handleToggle = () => {
         setOpen(!open)
@@ -68,7 +73,7 @@ const Login = () => {
                         <h1 className="text-5xl pb-10 text-slate-700 font-bold">Login now!</h1>
                         <img src={loginImg} alt="Logo Image" />
                     </div>
-                    <form onSubmit={handleLoginForm} className="w-1/2 card flex-shrink-0 max-w-sm shadow-2xl bg-base-100">
+                    <form onSubmit={handleLoginForm} className="w-1/2 shadow-2xl card flex-shrink-0 max-w-sm bg-base-100">
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
