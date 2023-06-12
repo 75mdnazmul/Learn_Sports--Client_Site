@@ -7,9 +7,9 @@ const Main = () => {
     return (
         <div>
             <Navber></Navber>
-            <div className='container mx-auto'>
+            {/* <div className='container mx-auto'> */}
                 <Outlet></Outlet>
-            </div>
+            {/* </div> */}
             <Footer></Footer>
         </div>
     );

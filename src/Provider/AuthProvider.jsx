@@ -14,18 +14,22 @@ const AuthProvider = ({ children }) => {
 
     // --------------------------------- login with google --------------------------------//
     const loginWithGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     //  --------------------------- ---- Email and password --------------------------//
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     //  ---------------------------- Login with email and password -------------------------------//
     const logIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     //  ----------------------------------- Logout function -----------------------------------//
     const logOut = () => {
+        setLoading(true)
         return signOut(auth)
     }
 
@@ -37,7 +41,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             unsubscribe();
         }
-    }, [])
+    }, [])  
 
     const authData = {
         user,

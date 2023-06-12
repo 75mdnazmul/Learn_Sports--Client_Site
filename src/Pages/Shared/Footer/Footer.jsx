@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../public/logo.webp'
 import { FaClock, FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhoneAlt, FaTwitterSquare, FaYoutube } from 'react-icons/fa';
+import Container from '../Container/Container';
 
 const Footer = () => {
     return (
         <div className='  bg-base-200 text-base-content'>
-            <div className="footer container mx-auto p-10 ">
+            <Container>
+            <div className="footer mx-auto p-10 ">
                 <div>
                     <Link to='/' className='flex items-center '>
                         <img className='w-[50px]' src={logo} alt="" />
@@ -57,6 +59,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+            </Container>
             <div className='text-center py-5 bg-slate-800 text-lg text-slate-300'>
                 <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
             </div>

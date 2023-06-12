@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
-import loginImg from "../../assets/Login & resister/register.webp"
+import React, { useContext, useEffect, useState } from 'react';
+import registerImg from "../../assets/Login & resister/register.webp"
 import usePageTitleName from '../../Hook/PageTitleName/PageTitleName';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Registration = () => {
     usePageTitleName('Registration page')
@@ -12,6 +13,8 @@ const Registration = () => {
     const [success, setSuccess] = useState("")
     const navigate = useNavigate();
     const location = useLocation()
+    const [registerIn, setRegisterIn] = useState(false);
+
     const from = location.state?.from?.pathname || '/';
 
     const { loginWithGoogle, createUser, setName, setPhoto } = useContext(AuthContext)
@@ -24,6 +27,7 @@ const Registration = () => {
                 console.log(google);
                 navigate(from, { replace: true })
                 setSuccess("Registration is successfully completed")
+                setRegisterIn(true)
             })
             .catch(error => {
                 setError(error.message);
@@ -38,12 +42,28 @@ const Registration = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const confirmPass = form.confirmPass.value;
         const photo = form.photo.value;
-        console.log(name, email, password, photo);
+        console.log(confirmPass);
+
         if (password.length < 6) {
-            setError('Password must be at least 6 cheracters')
+            setError('Password must be at least 6 cheracters.')
             return;
         }
+        else if(password !== confirmPass) {
+            setError('Password does not match with Confirm password.')
+            return;
+        }
+        else if(!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+            setError('Please add at least two uppercase letter.')
+            return;
+        }
+        else if(!/(?=.*[!@#$&*])/.test(password)) {
+            setError('Please add a special character or symbol.')
+            return;
+        }
+
+
         createUser(email, password)
             .then(result => {
                 const userLogged = result.user;
@@ -51,6 +71,7 @@ const Registration = () => {
                 form.reset();
                 navigate(from, { replace: true })
                 setSuccess("Registration is successfully completed")
+                setRegisterIn(true)
                 setName(name)
                 setPhoto(photo)
             })
@@ -58,6 +79,18 @@ const Registration = () => {
                 setError(error.message);
             })
     }
+    // Sweet Alert
+    useEffect(() => {
+        if (registerIn) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registration is successfully completed',
+                showConfirmButton: false,
+                timer: 3000
+              })
+        }
+      }, [registerIn]);
 
     // Password Toggle handle
     const [open, setOpen] = useState(false);
@@ -69,8 +102,8 @@ const Registration = () => {
         setOpen2(!open2)
     }
     return (
-        <div className="hero py-10">
-            <div className="hero-content flex-col justify-around lg:flex-row-reverse">
+        <div className="hero py-32">
+            <div className="hero-content flex-col justify-between lg:flex-row-reverse">
                 <form onSubmit={handleFormData} className="w-1/2 card shadow-2xl max-w-lg  bg-base-100">
                     <div className="card-body">
                         <div className="form-control">
@@ -103,7 +136,7 @@ const Registration = () => {
                                 (open2 === false) ? <FaEye /> : <FaEyeSlash />
                             }</span>
                         </div>
-                        <div className="form-control pb-5">
+                        <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
@@ -111,8 +144,8 @@ const Registration = () => {
                         </div>
                         <p className='font-bold text-lg text-red-500 text-center'>{error}</p>
                         <p className='font-bold text-lg text-[#F7B501] text-center'>{success}</p>
-                        <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-primary hover:bg-[#F7B501]">submit</button>
+                        <div className="form-control">
+                            <button type="submit" className="btn btn-primary hover:bg-[#F7B501] hover:rounded-full">Submit</button>
                         </div>
                         <h2 className='text-center pt-3'>Or Register with</h2>                            <div className='text-center'>
                             <button onClick={handleGoogleSignUp} className='p-3 text-white text-5xl mx-auto border-0 flex items-center'><FaGoogle /><span className='text-xl'>oogle</span></button>
@@ -121,8 +154,8 @@ const Registration = () => {
                     </div>
                 </form>
                 <div className="w-1/2 text-center ps-20">
-                    <h1 className="text-5xl pb-10 text-slate-700 font-bold">Register now!</h1>
-                    <img src={loginImg} alt="Logo Image" />
+                    <h1 className="text-5xl text-slate-700 font-bold">Register now!</h1>
+                    <img className='w-[1000px] h-[700px]' src={registerImg} alt="Logo Image" />
                 </div>
             </div>
         </div>
