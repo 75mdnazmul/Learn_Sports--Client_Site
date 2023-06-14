@@ -8,7 +8,8 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Dashboard from "../Layout/Dashboard";
-import MyCourses from "../Pages/Dashboard/MyCourses/MyCourses";
+import Mycourses from "../Pages/Dashboard/Mycourses/Mycourses";
+import AllCourses from "../Pages/AllClasses/AllCourses";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ export const router = createBrowserRouter([
       {
         path: '/registration',
         element: <Registration></Registration>
-      }
+      },
+      {
+        path: '/courses',
+        element: <AllCourses></AllCourses>
+      },
     ],
   },
   {
@@ -35,9 +40,13 @@ export const router = createBrowserRouter([
     element: <PrivateRoutes><Dashboard/></PrivateRoutes>,
     children: [
       {
-        path: 'myCourses',
-        element: <MyCourses></MyCourses>
+        path: 'mycourses',
+        element: <Mycourses></Mycourses>
       }
     ]
+  },
+  {
+    path: '/error',
+    element: <ErrorPage></ErrorPage>
   }
 ]);

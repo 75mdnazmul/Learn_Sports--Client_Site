@@ -21,14 +21,14 @@ const Dashboard = () => {
                         <h3 className='font-bold text-2xl text-white'>Learn Sports</h3>
                     </Link>
                     {/* Sidebar content here */}
-                    <li><Link to="mycourses">My Courses</Link></li>
-                    <li><Link to="mycourses">My Courses</Link></li>
-                    <li><Link to="mycourses">My Courses</Link></li>
-                    <li><Link to="mycourses">My Courses</Link></li>
+                    <li><Link to="mycourses">My courses</Link></li>
+                    <li><Link to="mycourses">My courses</Link></li>
+                    <li><Link to="mycourses">My courses</Link></li>
+                    <li><Link to="mycourses">My courses</Link></li>
                     <div className='divider'></div>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/instructors'>Instructors</Link></li>
-                    <li><Link to='/classes'>Classes</Link></li>
+                    <li><Link to='/courses'>courses</Link></li>
 
                 </ul>
 

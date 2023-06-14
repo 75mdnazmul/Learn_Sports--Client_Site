@@ -4,7 +4,7 @@ import Subscribe from '../Subscribe/Subscribe';
 import Banner from '../Banner/Banner';
 import usePageTitleName from '../../../Hook/PageTitleName/PageTitleName';
 import Slider from '../Slider/Slider';
-import PopularCourses from '../PopularCourses/PopularCourses';
+import PopularCourses from '../Popularcourses/Popularcourses';
 
 const Home = () => {
     usePageTitleName('Home page')
@@ -12,7 +12,7 @@ const Home = () => {
         <div>
             <Banner/>
             <Slider/>
-            <PopularCourses/>
+            <PopularCourses></PopularCourses>
             <JoinUs />
             <Subscribe />
         </div>

@@ -13,7 +13,7 @@ const Navber = () => {
     }
 
     return (
-        <div className="fixed w-full z-10 shadow-xl navbar bg-base-100 bg-opacity-70 hover:bg-opacity-100">
+        <div className="fixed top-0 w-full z-10 shadow-xl navbar bg-base-100 bg-opacity-70 hover:bg-opacity-100">
             <div className='container mx-auto navbar'>
                 <div className=" navbar-start">
                     <div className="dropdown">
@@ -30,12 +30,14 @@ const Navber = () => {
                     <ul className="menu menu-horizontal px-1 text-white text-lg font-bold">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/instructors'>Instructors</Link></li>
-                        <li><Link to='/classes'>Classes</Link></li>
+                        <li><Link to='/courses'>Courses</Link></li>
                         {
                             user?.email && <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
                             </>
                         }
+                        <li><Link to='/error'>Error page</Link></li>
+
                     </ul>
                 </div>
                 <div className="navbar-end">

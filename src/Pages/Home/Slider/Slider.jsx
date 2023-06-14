@@ -22,6 +22,13 @@ const Slider = () => {
         console.error(error);
       });
   }, []);
+  if (sliders.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-[100vh]">
+        <span className="loading loading-spinner w-[50px] text-warning"></span>
+      </div>
+    );
+  }
   return (
     <Container>
       <div className='mb-28 mt-20'>
