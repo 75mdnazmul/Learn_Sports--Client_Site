@@ -50,18 +50,18 @@ const Registration = () => {
             setError('Password must be at least 6 cheracters.')
             return;
         }
-        else if(password !== confirmPass) {
-            setError('Password does not match with Confirm password.')
-            return;
-        }
-        else if(!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-            setError('Please add at least two uppercase letter.')
-            return;
-        }
-        else if(!/(?=.*[!@#$&*])/.test(password)) {
-            setError('Please add a special character or symbol.')
-            return;
-        }
+        // else if(password !== confirmPass) {
+        //     setError('Password does not match with Confirm password.')
+        //     return;
+        // }
+        // else if(!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+        //     setError('Please add at least two uppercase letter.')
+        //     return;
+        // }
+        // else if(!/(?=.*[!@#$&*])/.test(password)) {
+        //     setError('Please add a special character or symbol.')
+        //     return;
+        // }
 
 
         createUser(email, password)
