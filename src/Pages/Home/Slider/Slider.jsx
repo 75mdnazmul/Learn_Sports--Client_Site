@@ -13,7 +13,7 @@ import Container from '../../Shared/Container/Container';
 const Slider = () => {
   const [sliders, setSliders] = useState([])
   useEffect(() => {
-    fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/slider')
+    fetch('http://localhost:5000/slider')
       .then(res => res.json())
       .then(data => {
         setSliders(data)
@@ -39,7 +39,7 @@ const Slider = () => {
             sliders.map(slider =>
               <SwiperSlide key={slider._id}>
                 <div className="card w-96 h-[500px] bg-base-100 shadow-xl">
-                  <figure><img className='h-[250px] w-full' src={slider.picture} alt="Shoes" /></figure>
+                  <figure><img className='h-[250px] w-full' src={slider.picture} alt="" /></figure>
                   <div className="card-body">
                     <h2 className="text-center font-bold text-white text-2xl content-center">{slider.name}</h2>
                     <p className='text-slate-200'>{slider.text}</p>
