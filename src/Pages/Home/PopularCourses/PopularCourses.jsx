@@ -45,7 +45,7 @@ const PopularCourses = () => {
                                 </span>
                                     </span>
                                 </p>
-                                <p className='absolute top-10 right-5 text-white rounded-xl font-bold py-1 px-2 bg-[#f7b919]'>Class Fee : <span className='text-xl'>{course.price}</span>$</p>
+                                <p className='absolute top-10 right-5 text-white rounded-xl font-bold py-1 px-2 bg-[#f7b919]'>Course Fee : <span className='text-xl'>{course.price}</span>$</p>
                                 <div className="card-actions justify-end">
                                     <button
                                         className={`btn btn-primary hover:rounded-full active:bg-[#F7B919] border-0 ${course.available_seats === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -56,7 +56,7 @@ const PopularCourses = () => {
                     ))}
                 </div>
                 <div className='text-center mt-16'>
-                    <Link to='/courses'>
+                    <Link to='/allCourses'>
                         <button className='py-2 px-3 rounded-lg hover:rounded-full bg-[#F7B919] text-white font-bold text-xl active:bg-[#5616c5]'>Show more</button>
                     </Link>
                 </div>

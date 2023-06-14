@@ -29,8 +29,8 @@ const Navber = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-white text-lg font-bold">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/instructors'>Instructors</Link></li>
-                        <li><Link to='/courses'>Courses</Link></li>
+                        <li><Link to='/allInstructors'>Instructors</Link></li>
+                        <li><Link to='/allCourses'>Courses</Link></li>
                         {
                             user?.email && <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
