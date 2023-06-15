@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Container from '../../Shared/Container/Container';
+import Container from '../Shared/Container/Container';
 
 const AllInstructors = () => {
     // Popular instructors information form DataBase
@@ -23,7 +23,7 @@ const AllInstructors = () => {
         );
     }
     // Sort and get the top 6 courses based on the number of students
-    const sortedInstructors = instructors.sort((a, b) => b.num_students - a.num_students).slice(0, 6);
+    const sortedInstructors = instructors.sort((a, b) => b.num_students - a.num_students);
     return (
         <Container>
             <div className='mt-40 mb-40'>

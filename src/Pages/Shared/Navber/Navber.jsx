@@ -3,13 +3,21 @@ import { Link } from 'react-router-dom';
 import logo from '../../../../public/logo.webp'
 import { AuthContext } from '../../../Provider/AuthProvider';
 import profile from "../../../assets/profile.webp"
+import Swal from 'sweetalert2';
 
 const Navber = () => {
     const { user, logOut, name, photo } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {})
             .catch(error => console.log(error))
+            Swal.fire({
+                position: 'top right',
+                icon: 'success',
+                title: 'Now you are logged out from this site.',
+                showConfirmButton: false,
+                timer: 3000
+              })
     }
 
     return (
@@ -29,8 +37,8 @@ const Navber = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-white text-lg font-bold">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/allInstructors'>Instructors</Link></li>
                         <li><Link to='/allCourses'>Courses</Link></li>
+                        <li><Link to='/allInstructors'>Instructors</Link></li>
                         {
                             user?.email && <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>

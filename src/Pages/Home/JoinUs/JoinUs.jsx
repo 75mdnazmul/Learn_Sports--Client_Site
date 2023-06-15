@@ -10,7 +10,7 @@ const JoinUs = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
             }}>
-                <h2 className='text-4xl font-bold'><spen className='text-[#F7B919]'>JOIN US NOW</spen> & GET FREE TRAINING!</h2>
+                <h2 className='text-4xl font-bold'><span className='text-[#F7B919]'>JOIN US NOW</span> & GET FREE TRAINING!</h2>
                 <p className='font-bold text-white py-5'>Honesty and transparency are the pillars of our organization. <br />We take our responsibilities seriously and work diligently to fulfill them.</p>
                 <button className='py-5 px-7 rounded-lg hover:rounded-full bg-[#F7B919] text-white font-bold text-xl'>JOIN NOW</button>
             </div>

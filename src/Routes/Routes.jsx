@@ -8,9 +8,9 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Dashboard from "../Layout/Dashboard";
-import Mycourses from "../Pages/Dashboard/Mycourses/Mycourses";
 import AllCourses from "../Pages/AllClasses/AllCourses";
-import AllInstructors from "../Pages/Home/AllInstructors/AllInstructors";
+import MyCourses from "../Pages/Dashboard/MyCourses/MyCourses";
+import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'mycourses',
-        element: <Mycourses></Mycourses>
+        element: <MyCourses></MyCourses>
       }
     ]
   },

@@ -24,6 +24,10 @@ const PopularCourses = () => {
           </div>
         );
       }
+    //   // Eroll Now Button implement
+    //   const handleEnrollNow = (course) => {
+    //     console.log(course);
+    //   }
 
     // Sort and get the top 6 courses based on the number of students
     const sortedcourses = courses.sort((a, b) => b.num_students - a.num_students).slice(0, 6);
@@ -48,6 +52,7 @@ const PopularCourses = () => {
                                 <p className='absolute top-10 right-5 text-white rounded-xl font-bold py-1 px-2 bg-[#f7b919]'>Course Fee : <span className='text-xl'>{course.price}</span>$</p>
                                 <div className="card-actions justify-end">
                                     <button
+                                        // onClick={()=> handleEnrollNow(course)}
                                         className={`btn btn-primary hover:rounded-full active:bg-[#F7B919] border-0 ${course.available_seats === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     >Enroll Now</button>
                                 </div>
