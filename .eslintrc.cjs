@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-unused-vars": 0
   },
 }
