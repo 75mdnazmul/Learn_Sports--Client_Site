@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const AddCourses = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ const AddCourses = () => {
   const onSubmit = (data) => {
     console.log(data);
     const addCourses = { InstructorName: data.InstructorName , availableSeat:data.availableSeat, className:data.className,email:data.email,imageURL:data.imageURL,price:parseInt(data.price), stutus: 'pending'};
-        fetch("http://localhost:5000/addedCourse", {
+        fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/addedCourse", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -9,15 +9,19 @@ import Registration from "../Pages/Registration/Registration";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Dashboard from "../Layout/Dashboard";
 import AllCourses from "../Pages/AllCourses/AllCourses";
-// import MyCourses from "../Pages/Dashboard/MyCourses/MyCourses";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
-import UserHome from "../Pages/Dashboard/MyCourses/UserHome";
 import AdminRoute from "./AdminRoute";
-import ManageCourses from "../Pages/Dashboard/MyCourses/ManageCourses";
-import AllUsers from "../Pages/Dashboard/MyCourses/AllUsers";
 import InstructorRoute from "./InstructorRoute";
-import AddCourses from "../Pages/Dashboard/MyCourses/AddCourses";
-import MyCourses from "../Pages/Dashboard/MyCourses/MyCourses";
+import FeedBack from "../Pages/Dashboard/FeedBack";
+import UserHome from "../Pages/Dashboard/UserHome";
+import EnrolledCourse from "../Pages/Dashboard/StudentDashboard/EnrolledCourse";
+import PaymentMethod from "../Pages/Dashboard/StudentDashboard/PaymentMethod";
+import SelectedCourse from "../Pages/Dashboard/StudentDashboard/SelectedCourse";
+import ManageCourses from "../Pages/Dashboard/ManageCourses";
+import AllUsers from "../Pages/Dashboard/AllUsers";
+import AddCourses from "../Pages/Dashboard/AddCourses";
+import MyCourses from "../Pages/Dashboard/MyCourses";
+import PaymentHistory from "../Pages/Dashboard/StudentDashboard/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -54,29 +58,72 @@ export const router = createBrowserRouter([
         <Dashboard></Dashboard>{" "}
       </PrivateRoutes>
     ),
-    errorElement: <ErrorPage />,
     children: [
       {
-        path: "userhome",
-        element: <UserHome></UserHome>,
+        path: "userHome",
+        element: <UserHome></UserHome>
       },
       {
         path: "manage-class",
-        element: <AdminRoute><ManageCourses></ManageCourses></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageCourses></ManageCourses>
+          </AdminRoute>
+        ),
       },
       {
         path: "allusers",
         element: (
-          <AdminRoute><AllUsers></AllUsers></AdminRoute>
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
         ),
       },
       {
-        path: "myCourses",
-        element: <InstructorRoute><MyCourses></MyCourses></InstructorRoute>,
+        path: 'feedback/:id',
+        element: <AdminRoute>
+          <FeedBack></FeedBack>
+        </AdminRoute>
       },
       {
-        path: "addCourses",
-        element: <InstructorRoute><AddCourses></AddCourses></InstructorRoute>,
+        path: "myCourse",
+        element: (
+          <InstructorRoute>
+            <MyCourses></MyCourses>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "addclasses",
+        element: (
+          <InstructorRoute>
+            <AddCourses></AddCourses>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "selectedCourse",
+        element: <PrivateRoutes>
+          <SelectedCourse></SelectedCourse>
+        </PrivateRoutes>,
+      },
+      {
+        path: "enrolledCourse",
+        element: <PrivateRoutes>
+          <EnrolledCourse></EnrolledCourse>
+        </PrivateRoutes>,
+      },
+      {
+        path: "paymentHistory",
+        element: <PrivateRoutes>
+          <PaymentHistory></PaymentHistory>
+        </PrivateRoutes>,
+      },
+      {
+        path: "PaymentMethod/:id",
+        element: <PrivateRoutes>
+          <PaymentMethod></PaymentMethod>
+        </PrivateRoutes>,
       },
     ],
   },

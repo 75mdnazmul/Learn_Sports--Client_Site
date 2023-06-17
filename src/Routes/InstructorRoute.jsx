@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
 import useInstructor from '../Hook/useInstructors';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const InstructorRoute = ({children}) => {
-    const { user, loading } = useAuth();
+    const { user, loading } = useContext(AuthContext)
+
     const [isInstructor, isInstructorLoading] = useInstructor();
     const location = useLocation();
 
     if(loading || isInstructorLoading){
         return <progress className="progress w-56"></progress>
     }
-
+    
     if (user && isInstructor) {
         return children;
     }

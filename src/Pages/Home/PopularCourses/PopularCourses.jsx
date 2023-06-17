@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Container from '../../Shared/Container/Container';
 import { Link } from 'react-router-dom';
+import SingleCourse from '../../AllCourses/SingleCourse';
 
 const PopularCourses = () => {
     // Popular courses information form DataBase
     const [courses, setcourses] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/courses')
             .then(res => res.json())
             .then(data => {
                 setcourses(data)
@@ -37,27 +38,7 @@ const PopularCourses = () => {
                 <h2 className='text-[42px] text-center my-12 text-slate-800 font-bold'>Popular Sports Courses</h2>
                 <div className="grid grid-cols-3 gap-5">
                     {sortedcourses.map(course => (
-                        <div key={course._id} className={`card w-96 text-black shadow-2xl ${course.available_seats === 0 ? 'bg-red-300' : ''}`}>
-                            <figure><img className='h-[250px] w-full' src={course.image} alt="Shoes" /></figure>
-                            <div className="card-body relative">
-                                <h2 className="card-title text-3xl font-bold">{course.name}</h2>
-                                <p className='font-bold pt-5'>Instructor : <span className='text-xl text-[#5616c5]'>{course.instructor}</span></p>
-                                <p className='font-bold'>Number of Students : <span className='text-lg text-[#5616c5]'>{course.num_students}</span></p>
-                                <p className='font-bold'>Available Seats :   
-                                <span className='text-lg text-[#5616c5]'> {course.available_seats}  <span className='text-red-500 text-md'>
-                                {`${course.available_seats === 0 ? "( No seats available )" : ''}`}
-                                </span>
-                                    </span>
-                                </p>
-                                <p className='absolute top-10 right-5 text-white rounded-xl font-bold py-1 px-2 bg-[#f7b919]'>Course Fee : <span className='text-xl'>{course.price}</span>$</p>
-                                <div className="card-actions justify-end">
-                                    <button
-                                        // onClick={()=> handleEnrollNow(course)}
-                                        className={`btn btn-primary hover:rounded-full active:bg-[#F7B919] border-0 ${course.available_seats === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                    >Enroll Now</button>
-                                </div>
-                            </div>
-                        </div>
+                        <SingleCourse key={course._id} course={course}></SingleCourse>
                     ))}
                 </div>
                 <div className='text-center mt-16'>

@@ -2,22 +2,21 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../public/logo.webp'
 import { AuthContext } from '../../../Provider/AuthProvider';
-import profile from "../../../assets/profile.webp"
 import Swal from 'sweetalert2';
 
 const Navber = () => {
-    const { user, logOut, name, photo } = useContext(AuthContext)
+    const { user, logOut} = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
-            .then(() => {})
+            .then(() => { })
             .catch(error => console.log(error))
-            Swal.fire({
-                position: 'top right',
-                icon: 'success',
-                title: 'Now you are logged out from this site.',
-                showConfirmButton: false,
-                timer: 3000
-              })
+        Swal.fire({
+            position: 'top right',
+            icon: 'success',
+            title: 'Now you are logged out from this site.',
+            showConfirmButton: false,
+            timer: 3000
+        })
     }
 
     return (
@@ -49,22 +48,23 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {
-                        user ? (
-                            <>
-                                <img className="w-[60px] h-[60px] mx-2 border-[3px] border-white rounded-full" title={user.displayName || name} 
-                                src= {photo && photo ? photo : ( user ? user.photoURL : profile )} alt="Profile Picture" />
+                    {user ? (
+                        <>
+                            <img
+                                src={user?.photoURL}
 
-                                <Link to="/login">
-                                    <button onClick={handleLogOut} className="btn font-bold text-white bg-[#F7B501] ml-3">Log Out</button>
-                                </Link>
-                            </>
-                        ) : (
-                            <Link to="/login">
-                                <button className="btn text-white border-0 hover:btn-primary bg-[#F7B501] hover:rounded-3xl px-5">Login</button>
-                            </Link>
-                        )
-                    }
+                                title={user.displayName}
+                                alt=""
+                                className="w-20 h-16 rounded-full mr-4 "
+                            />
+                            <Link onClick={handleLogOut} to="/" className="btn">
+                                Log Out
+                            </Link> </>
+                    ) : (
+                        <Link to="/login" className="btn">
+                            Login
+                        </Link>
+                    )}
                 </div>
             </div>
 

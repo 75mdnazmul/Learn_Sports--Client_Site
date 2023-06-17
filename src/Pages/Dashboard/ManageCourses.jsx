@@ -1,5 +1,5 @@
 import React from "react";
-import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -33,27 +33,27 @@ const ManageCourses = () => {
           });
   };
 
-  // const handleDenied = (id) => {
-  //     const updateApp = { status: 'denied' };
-  //     axiosSecure
-  //         .patch(`/allCourses/${id}`, updateApp)
-  //         .then((response) => {
-  //             if (response.data.modifiedCount > 0) {
+  const handleDenied = (id) => {
+    const updateApp = { stutus: 'denied' };
+    axiosSecure
+        .patch(`/allCourses/${id}`, updateApp)
+        .then((response) => {
+            if (response.data.modifiedCount > 0) {
 
-  //                 Swal.fire({
-  //                     position: 'top-end',
-  //                     icon: 'success',
-  //                     title: `is  denied Now!`,
-  //                     showConfirmButton: false,
-  //                     timer: 1500,
-  //                 });
-  //                 refetch();
-  //             }
-  //         })
-  //         .catch((error) => {
-  //             console.log(error);
-  //         });
-  // };
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `is  denied Now!`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                refetch();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
   return (
     <section>
@@ -110,7 +110,7 @@ const ManageCourses = () => {
                     </button>
                     <button
                       className="btn btn-sm btn-outline btn-error"
-                      // onClick={() => handleDenied(item._id)}
+                      onClick={() => handleDenied(item._id)}
                     >
                       denied
                     </button>

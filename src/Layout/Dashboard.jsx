@@ -9,9 +9,10 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Dashboard = () => {
     usePageTitleName('Dashboard')
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor()
+    // const [isInstructor] = useInstructor()
+    const isInstructor = false;
 
     return (
         <div className="drawer lg:drawer-open">
@@ -37,10 +38,14 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     {user && isAdmin ? (
                         <>
-                            <li className="text-2xl font-bold text-white">Admin</li> <br/>
+                            <li>
+                                <img className="w-24 rounded-full" src={user.photoURL} alt="" />
+                            </li>
+                            <li className="text-xl my-5">{user.email}</li>
+                            <li className="text-2xl font-bold text-white">Admin</li> <br />
                             <li>
                                 <Link to="manage-class">
-                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookReader></FaBookReader> Manage Classes </span>
+                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookReader></FaBookReader> Manage Courses </span>
                                 </Link>
                             </li>
                             <li>
@@ -51,38 +56,46 @@ const Dashboard = () => {
                         </>
                     ) : user && isInstructor ? (
                         <>
-                            <li className="text-2xl font-bold text-white">Instructor </li> <br/>
+                            <li>
+                                <img className="w-24 rounded-full" src={user.photoURL} alt="" />
+                            </li>
+                            <li className="text-xl my-5">{user.email}</li>
+                            <li className="text-2xl font-bold text-white">Instructor </li> <br />
                             <li>
                                 <Link to="addCourses">
-                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookReader></FaBookReader> Add A Class </span>
+                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookReader></FaBookReader> Add A Courses </span>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="myCourses">
-                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookOpen></FaBookOpen> My Classes </span>
+                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookOpen></FaBookOpen> My Courses </span>
                                 </Link>
                             </li>
                         </>
                     ) : (
                         <>
-                            <li className="text-2xl font-bold text-white">User</li><br/>
                             <li>
-                                <Link to="">
-                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center "><FaBookReader></FaBookReader> My Selected Class</span>
+                                <img className="w-24 rounded-full" src={user.photoURL} alt="" />
+                            </li>
+                            <li className="text-xl my-5">{user.email}</li>
+                            <li className="text-2xl font-bold text-white">Student</li><br />
+                            <li>
+                                <Link to="selectedCourse">
+                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center "><FaBookReader></FaBookReader> My Selected Courses</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="">
-                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaUsers></FaUsers> My Enrolled Class</span>
+                                <Link to="enrolledCourse">
+                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaUsers></FaUsers> My Enrolled Courses</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="">
-                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaUsers></FaUsers> Pyment History</span>
+                                <Link to="paymentHistory">
+                                    <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaUsers></FaUsers> Payment History</span>
                                 </Link>
                             </li>
                         </>
-                    )}                    
+                    )}
                 </ul>
             </div>
         </div>

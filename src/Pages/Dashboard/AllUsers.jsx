@@ -8,11 +8,11 @@ const AllUsers = () => {
   let isMakeInstructorDisabled = false;
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/users");
     return res.json();
   });
   // useEffect(() => {
-  //   fetch("http://localhost:5000/users")
+  //   fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/users")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setAllUsers(data);
@@ -20,7 +20,7 @@ const AllUsers = () => {
   // }, []);
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://learn-sports-server-site-75mdnazmul.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://learn-sports-server-site-75mdnazmul.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'

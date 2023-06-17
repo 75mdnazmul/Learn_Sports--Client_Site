@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const from = location.state?.from?.pathname || '/';
 
-    const { logIn, loginWithGoogle } = useContext(AuthContext)
+    const { logIn } = useContext(AuthContext)
 
     const handleLoginForm = event => {
         event.preventDefault();
@@ -25,7 +26,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-    // ---------------------------- login with email and password ----------------------------//
+    // ----------------------- login with email and password ----------------------//
 
         logIn(email, password)
             .then(result => {
@@ -41,20 +42,7 @@ const Login = () => {
                 setError(error.message)
             })
     }
-    // --------------------------------- login with google --------------------------------//
-    const handleGoogleLogIn = () => {
-        loginWithGoogle()
-            .then(result => {
-                const Google = result.user
-                console.log(Google);
-                navigate(from, { replace: true })
-                setSuccess("Google Login is successfully completed")
-                setLoggedIn(true)
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
+
     // Sweet Alert
     useEffect(() => {
         if (loggedIn) {
@@ -106,9 +94,8 @@ const Login = () => {
                                 <button type="submit" className="btn btn-primary hover:bg-[#F7B501] hover:rounded-full">Login</button>
                             </div>
                             <h2 className='text-center pt-3'>Or Login with</h2>
-                            <div className='text-center'>
-                                <button onClick={handleGoogleLogIn} className='p-3 text-white text-5xl mx-auto border-0 flex items-center'><FaGoogle /><span className='text-xl'>oogle</span></button>
-                            </div>
+                            <SocialLogin></SocialLogin>
+
                             <p className='text-center pt-3 mb-0 text-lg'>Do not have an account ? Then <Link to="/registration" className='underline font-bold hover:text-[#F7B501]'>Register</Link></p>
                         </div>
                     </form>

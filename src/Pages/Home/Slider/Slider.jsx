@@ -13,7 +13,7 @@ import Container from '../../Shared/Container/Container';
 const Slider = () => {
   const [sliders, setSliders] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/slider')
+    fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/slider')
       .then(res => res.json())
       .then(data => {
         setSliders(data)
