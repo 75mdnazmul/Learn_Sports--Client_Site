@@ -5,7 +5,7 @@ const AllInstructors = () => {
     // Popular instructors information form DataBase
     const [instructors, setInstructors] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
                 setInstructors(data)

@@ -8,7 +8,7 @@ const AllCoursesFromAdd = () => {
     const [courses, setcourses] = useState([])
     console.log(courses);
     useEffect(() => {
-        fetch('http://localhost:5000/AllCoursesFromAdd')
+        fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/AllCoursesFromAdd')
             .then(res => res.json())
             .then(data => {
                 setcourses(data)

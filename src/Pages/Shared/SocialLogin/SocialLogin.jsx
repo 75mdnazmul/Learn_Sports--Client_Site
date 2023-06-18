@@ -26,7 +26,7 @@ const SocialLogin = () => {
           photo: loggedGoogle.photoURL,
           role: 'student'
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

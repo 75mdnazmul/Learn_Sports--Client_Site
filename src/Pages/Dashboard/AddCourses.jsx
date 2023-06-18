@@ -16,7 +16,7 @@ const AddCourses = () => {
   const onSubmit = (data) => {
     console.log(data);
     const addCourses = { InstructorName: data.InstructorName, availableSeat: data.availableSeat, courseName: data.courseName, email: data.email, imageURL: data.imageURL, price: parseInt(data.price), stutus: 'pending' };
-    fetch("http://localhost:5000/addCourse", {
+    fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/addCourse", {
       method: "POST",
       headers: {
         "content-type": "application/json",
