@@ -25,7 +25,7 @@ const FeedBack = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    navigate('/dashboard/manage-class')
+                    navigate('/dashboard/manageCourses')
                 }
             })
             .catch((error) => {

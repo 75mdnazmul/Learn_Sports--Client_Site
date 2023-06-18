@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <span className="font-bold text-2xl text-slate-200">courses</span>
+                    <span className="font-bold text-2xl text-slate-200">Courses</span>
                     <a className="link link-hover hover:text-[#F7B501] text-lg">Football</a>
                     <a className="link link-hover hover:text-[#F7B501] text-lg">Cricket </a>
                     <a className="link link-hover hover:text-[#F7B501] text-lg">Badminton </a>

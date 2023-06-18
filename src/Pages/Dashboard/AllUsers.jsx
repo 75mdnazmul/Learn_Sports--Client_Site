@@ -1,18 +1,20 @@
 // import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import usePageTitleName from "../../Hook/PageTitleName/PageTitleName";
 
 const AllUsers = () => {
+  usePageTitleName('Manage Users | Admin')
   // const [allUsers, setAllUsers] = useState([]);
   let isMakeAdminDisabled = false;
   let isMakeInstructorDisabled = false;
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/users");
+    const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
   // useEffect(() => {
-  //   fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/users")
+  //   fetch("http://localhost:5000/users")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setAllUsers(data);
@@ -20,7 +22,7 @@ const AllUsers = () => {
   // }, []);
 
   const handleMakeAdmin = (user) => {
-    fetch(`https://learn-sports-server-site-75mdnazmul.vercel.app/users/admin/${user._id}`, {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +47,7 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`https://learn-sports-server-site-75mdnazmul.vercel.app/users/admin/${user._id}`, {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
@@ -71,13 +73,13 @@ const AllUsers = () => {
 
   return (
     <>
-      <div>Totall Users : {users.length}</div>
+      <p className="text-black text-2xl font-bold mb-5">Totall Users : {users.length}</p>
       <hr />
       <div className="overflow-x-auto w-3/4">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-black">
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
@@ -105,7 +107,7 @@ const AllUsers = () => {
                     "instructor"
                   ) : (
                     <button onClick={() => handleMakeInstructor(user)} disabled={isMakeInstructorDisabled} className="btn btn-ghost bg-orange-600">
-                    Make Admin
+                    Make Instructor
                   </button>
                   )}
                 </td>

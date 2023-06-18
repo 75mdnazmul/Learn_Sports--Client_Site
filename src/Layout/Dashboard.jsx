@@ -11,8 +11,7 @@ const Dashboard = () => {
     usePageTitleName('Dashboard')
     const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin();
-    // const [isInstructor] = useInstructor()
-    const isInstructor = false;
+    const [isInstructor] = useInstructor()
 
     return (
         <div className="drawer lg:drawer-open">
@@ -44,7 +43,7 @@ const Dashboard = () => {
                             <li className="text-xl my-5">{user.email}</li>
                             <li className="text-2xl font-bold text-white">Admin</li> <br />
                             <li>
-                                <Link to="manage-class">
+                                <Link to="manageCourses">
                                     <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaBookReader></FaBookReader> Manage Courses </span>
                                 </Link>
                             </li>
@@ -80,12 +79,12 @@ const Dashboard = () => {
                             <li className="text-xl my-5">{user.email}</li>
                             <li className="text-2xl font-bold text-white">Student</li><br />
                             <li>
-                                <Link to="selectedCourse">
+                                <Link to="selectedCourses">
                                     <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center "><FaBookReader></FaBookReader> My Selected Courses</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="enrolledCourse">
+                                <Link to="enrolledCourses">
                                     <span className="font-bold hover:text-white active:text-[#F7B919] flex gap-x-2 items-center"><FaUsers></FaUsers> My Enrolled Courses</span>
                                 </Link>
                             </li>

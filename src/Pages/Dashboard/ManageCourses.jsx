@@ -3,8 +3,10 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import usePageTitleName from "../../Hook/PageTitleName/PageTitleName";
 
 const ManageCourses = () => {
+  usePageTitleName('Manage Courses | Admin')
   const [axiosSecure] = useAxiosSecure();
   const { data: allCourses = [], refetch } = useQuery(["allCourses"], async () => {
     const res = await axiosSecure.get("/allCourses");
@@ -12,48 +14,48 @@ const ManageCourses = () => {
   });
 
   const handleApproved = (id) => {
-      const updateApp = { status: 'approved' };
-      axiosSecure
-          .patch(`/allCourses/${id}`, updateApp)
-          .then((response) => {
-              if (response.data.modifiedCount > 0) {
+    const updateApp = { status: 'approved' };
+    axiosSecure
+      .patch(`/allCourses/${id}`, updateApp)
+      .then((response) => {
+        if (response.data.modifiedCount > 0) {
 
-                  Swal.fire({
-                      position: 'top-end',
-                      icon: 'success',
-                      title: ` is approved Now!`,
-                      showConfirmButton: false,
-                      timer: 1500,
-                  });
-                  refetch();
-              }
-          })
-          .catch((error) => {
-              console.log(error);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: ` is approved Now!`,
+            showConfirmButton: false,
+            timer: 1500,
           });
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleDenied = (id) => {
     const updateApp = { stutus: 'denied' };
     axiosSecure
-        .patch(`/allCourses/${id}`, updateApp)
-        .then((response) => {
-            if (response.data.modifiedCount > 0) {
+      .patch(`/allCourses/${id}`, updateApp)
+      .then((response) => {
+        if (response.data.modifiedCount > 0) {
 
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: `is  denied Now!`,
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-                refetch();
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-};
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `is  denied Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <section>
@@ -61,7 +63,7 @@ const ManageCourses = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-black">
               <th>#</th>
               <th>Name</th>
               <th>Class Info</th>
@@ -75,7 +77,7 @@ const ManageCourses = () => {
           <tbody>
             {allCourses.map((item, index) => (
               <tr
-                className="bg-gradient-to-r from-rose-100 to-teal-100"
+                className="bg-gradient-to-r from-orange-200 to-blue-200 text-black " 
                 key={item._id}
               >
                 <th>{index + 1}</th>
@@ -116,7 +118,7 @@ const ManageCourses = () => {
                     </button>
                     <Link to={`/dashboard/feedback/${item._id}`}>
                       <button className="btn btn-sm btn-outline btn-warning">
-                        feedback
+                        Feedback
                       </button>
                     </Link>
                   </div>

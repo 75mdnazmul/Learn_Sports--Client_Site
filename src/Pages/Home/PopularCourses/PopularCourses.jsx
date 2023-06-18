@@ -7,7 +7,7 @@ const PopularCourses = () => {
     // Popular courses information form DataBase
     const [courses, setcourses] = useState([])
     useEffect(() => {
-        fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/courses')
+        fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
                 setcourses(data)

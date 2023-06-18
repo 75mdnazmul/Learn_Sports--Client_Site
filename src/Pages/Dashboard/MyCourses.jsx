@@ -4,14 +4,14 @@ import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import usePageTitleName from "../../Hook/PageTitleName/PageTitleName";
 
 const MyCourses = () => {
+  usePageTitleName('My Courses | Instructor')
   const {user} = useContext(AuthContext)
-
   const [axiosSecure] = useAxiosSecure();
   const { data: allCourse = [], refetch } = useQuery(['allCourses'], async () => {
     const res = await axiosSecure.get(`/myCourse/${user?.email}`)
-    refetch()
     return res.data;
   })
   //  handle Delete
@@ -36,19 +36,18 @@ const MyCourses = () => {
                 'Deleted!',
                 'Your Toy has been deleted.',
                 'success'
-
               )
               refetch()
             }
           })
       }
     })
-
   }
+  console.log(allCourse);
   return (
     <>
       <div>
-        <h2 className="my-4 text-2xl font-semibold">
+        <h2 className="text-black text-2xl font-bold mb-5">
           Totall Courses : {allCourse.length}
         </h2>
       </div>
@@ -74,7 +73,7 @@ const MyCourses = () => {
                   <td>
                     <img className="w-12 h-12" src={Courses.imageURL} alt="" />
                   </td>
-                  <td>{Courses.className}</td>
+                  <td>{Courses.courseName}</td>
                   <td>{Courses?.stutus}</td>
                   <td>{Courses?.feedback}</td>
                   <td><button onClick={() => handleDelete(Courses._id)} className="btn btn-square bg-indigo-200">

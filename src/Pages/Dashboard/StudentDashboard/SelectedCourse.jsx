@@ -4,8 +4,10 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import usePageTitleName from "../../../Hook/PageTitleName/PageTitleName";
 
 const SelectedCourse = () => {
+  usePageTitleName('My Selected Courses | Student')
     const { user } = useContext(AuthContext)
     const [axiosSecure] = useAxiosSecure();
     const { data: select = [], refetch } = useQuery(['select'], async () => {
@@ -48,6 +50,7 @@ const SelectedCourse = () => {
             <tr className="text-black">
               <th>#</th>
               <th>Instructor Name</th>
+              <th>Course Name</th>
               <th>Coarse Info</th>
               <th>Price</th>
               <th>Seats</th>
@@ -61,15 +64,19 @@ const SelectedCourse = () => {
                 <td>{index + 1}</td>
                 <td>
                   <div>
-                    <div className="font-bold text-black">{item.InstructorName}</div>
-                    <div className="text-sm opacity-50 text-black">{item.user}</div>
+                    <div className="font-bold text-black">{item.instructor}</div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <div className="font-bold text-black">{item.name}</div>
                   </div>
                 </td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={item.imageURL} alt="" />
+                        <img src={item.image} alt="" />
                       </div>
                     </div>
                     <div>

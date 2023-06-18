@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
         element: <UserHome></UserHome>
       },
       {
-        path: "manage-class",
+        path: "manageCourses",
         element: (
           <AdminRoute>
             <ManageCourses></ManageCourses>
@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
         </AdminRoute>
       },
       {
-        path: "myCourse",
+        path: "myCourses",
         element: (
           <InstructorRoute>
             <MyCourses></MyCourses>
@@ -94,7 +94,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "addclasses",
+        path: "addCourses",
         element: (
           <InstructorRoute>
             <AddCourses></AddCourses>
@@ -102,13 +102,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "selectedCourse",
+        path: "selectedCourses",
         element: <PrivateRoutes>
           <SelectedCourse></SelectedCourse>
         </PrivateRoutes>,
       },
       {
-        path: "enrolledCourse",
+        path: "enrolledCourses",
         element: <PrivateRoutes>
           <EnrolledCourse></EnrolledCourse>
         </PrivateRoutes>,

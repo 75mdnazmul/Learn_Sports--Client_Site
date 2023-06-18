@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Container from '../Shared/Container/Container';
-import { Link } from 'react-router-dom';
 import SingleCourse from './SingleCourse';
+import AllCoursesFromAdd from './AllCoursesFromAdd';
 
 const AllCourses = () => {
     // Popular courses information form DataBase
     const [courses, setcourses] = useState([])
     useEffect(() => {
-        fetch('https://learn-sports-server-site-75mdnazmul.vercel.app/courses')
+        fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
                 setcourses(data)
@@ -28,16 +28,20 @@ const AllCourses = () => {
     const sortedcourses = courses.sort((a, b) => b.num_students - a.num_students);
 
     return (
-        <Container>
-            <div className='mt-40 mb-40'>
-                <h2 className='text-[42px] text-center my-12 text-slate-800 font-bold'>Popular Sports Courses</h2>
-                <div className="grid grid-cols-3 gap-5">
-                    {sortedcourses.map(course => (
-                        <SingleCourse key={course._id} course={course}></SingleCourse>
-                    ))}
+        <>
+            <AllCoursesFromAdd></AllCoursesFromAdd>
+            <Container>
+                <div className='mt-40 mb-40'>
+                    <h2 className='text-[42px] text-center my-12 text-slate-800 font-bold'>Other Popular Sports Courses</h2>
+                    <div className="grid grid-cols-3 gap-5">
+                        {sortedcourses.map(course => (
+                            <SingleCourse key={course._id} course={course}></SingleCourse>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </Container>
+            </Container>
+        </>
+
     );
 };
 

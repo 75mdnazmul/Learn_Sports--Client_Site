@@ -34,7 +34,7 @@ const Registration = () => {
             updateUserProfile(data.name, data.photoURL).then(() => {
                 const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'student' };
                 console.log(saveUser);
-                fetch("https://learn-sports-server-site-75mdnazmul.vercel.app/users", {
+                fetch("http://localhost:5000/users", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
